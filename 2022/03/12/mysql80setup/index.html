@@ -1,0 +1,553 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="/manifest.json?v=2.6.2"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/%5Bobject%20Object%5D?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/%5Bobject%20Object%5D"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="GpJ9wut12pZrYl6xwaAZaScXKEp8yESZbJzRP04mxnM"><meta name="msvalidate.01" content="F73719201D2AE4AE392C553985FC908C"><meta name="baidu-site-verification" content="code-V983ajoQ3a"><meta name="360-site-verification" content="e1f2146c9da48b0cfb3476ea2699b177"><meta name="sogou_site_verification" content="CEvuM22sM6"><meta name="description" content="本教程将教会您如何在Windows操作系统中下载、安装及配置MySQL 8.0。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《MySQL 8.0 保姆级下载、安装及配置教程》">
+<meta property="og:url" content="https://questionmark001.github.io/2022/03/12/mysql80setup/index.html">
+<meta property="og:site_name" content="QuestionMark001&#39;s Blog">
+<meta property="og:description" content="本教程将教会您如何在Windows操作系统中下载、安装及配置MySQL 8.0。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/13/bqrMu9.jpg">
+<meta property="article:published_time" content="2022-03-12T10:06:29.000Z">
+<meta property="article:modified_time" content="2022-03-16T13:13:19.376Z">
+<meta property="article:author" content="QuestionMark001-向阳菌">
+<meta property="article:tag" content="MySQL 8.0">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/03/13/bqrMu9.jpg"><title>《MySQL 8.0 保姆级下载、安装及配置教程》 | QuestionMark001's Blog</title><link ref="canonical" href="https://questionmark001.github.io/2022/03/12/mysql80setup/"><link rel="alternate" href="/atom.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=G-8GVPX6T9N6" async=""></script><script>if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-8GVPX6T9N6');
+}</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?78d162c3320774c1f956da2bfc03b07a';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: ["google","bing","baidu"],
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"ocean","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/playlist/"><span class="header-nav-menu-item__icon"><i class="fas fa-headphones"></i></span><span class="header-nav-menu-item__text">歌单</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/friends/"><span class="header-nav-menu-item__icon"><i class="fas fa-user-friends"></i></span><span class="header-nav-menu-item__text">朋友</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="far fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://s1.ax1x.com/2022/03/13/bqrMu9.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">QuestionMark001's Blog</div><div class="header-banner-info__subtitle">Be thankful and be gentle.</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><div class="sticky-top" data-popover="置顶文章" data-popover-pos="up"><span class="sticky-top__icon"><i class="fas fa-thumbtack"></i></span></div><h1 class="post-title">《MySQL 8.0 保姆级下载、安装及配置教程》</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-03-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-03-16</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.9k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">10分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s1.ax1x.com/2022/03/13/bqrMu9.jpg"  alt="MySQL 8.0 保姆级下载、安装及配置教程" title="MySQL 8.0 保姆级下载、安装及配置教程" />
+      </p>
+<style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-pbzsBQTSMjQEYPUE" src="https://player.bilibili.com/player.html?bvid=BV12q4y1477i&page=1&high_quality=1&danmaku=false" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-pbzsBQTSMjQEYPUE").style.height=document.getElementById("mmedia-pbzsBQTSMjQEYPUE").scrollWidth*0.76+"px";
+    window.onresize = function(){
+      document.getElementById("mmedia-pbzsBQTSMjQEYPUE").style.height=document.getElementById("mmedia-pbzsBQTSMjQEYPUE").scrollWidth*0.76+"px";
+    }; </script>  
+<ul>
+<li><strong>✨强烈推荐将本教程搭配视频食用，效果更佳~ 📺<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12q4y1477i"  title="视频地址">视频地址</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></strong></li>
+<li>🎈文字版教程与视频教程有轻微的差异，视频教程先验证后配置环境变量，文字版教程先配置环境变量后验证。<strong>但本质上并无二致，可放心食用。</strong></li>
+</ul>
+
+        <h2 id="一-开始"   >
+          <a href="#一-开始" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#一-开始"></a> 一、开始</h2>
+      
+<ul>
+<li>这是一期MySQL 8.0下载、安装及配置教程，如对本教程有任何异议，欢迎在下方评论区留言，谢谢。</li>
+</ul>
+<p>❗注意：</p>
+<ul>
+<li>本教程仅适用于微软的Windows操作系统；</li>
+<li>如果想要参考本教程重新安装MySQL，请彻底卸载之前的MySQL，并清理其 <em><strong>残留文件</strong></em> 。</li>
+</ul>
+
+        <h2 id="二-下载"   >
+          <a href="#二-下载" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#二-下载"></a> 二、下载</h2>
+      
+<ol>
+<li>
+<p>首先我们打开浏览器，在浏览器的最上方可以看到 <strong>网址栏 (URL栏)</strong> ，在网址栏中，切换输入法状态为 <strong>英文</strong> ，输入</p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.mysql.com/"  title="MySQL官网">https://www.mysql.com/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>之后，便可以看到 <strong>Oracle 甲骨文</strong> 的 <strong>MySQL</strong> 官网。</p>
+<p>可能有的小伙伴就要问了，“怎么都是英文的啊，我看不懂啊！”。这时不要慌，将网页拉至底部，发现左下角有一个地球的标志，欸，我们点击旁边括号里的 <strong><code>中文</code></strong> ，此时官网的首页就会变为中文，这时点击网页上方的 <strong><code>下载</code></strong> 按钮 。</p>
+</li>
+<li>
+<p>进入下载页面后，我们会发现页面只是部分汉化，不过不要紧，在正常情况下，会有如下版本选项：</p>
+ <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MySQL Enterprise Edition             //企业版(商业收费)</span><br><span class="line">MySQL Cluster CGE                    //高级集群版(商业收费)</span><br><span class="line">MySQL Community (GPL) Downloads »    //社区版(开源免费)</span><br></pre></td></tr></table></div></figure>
+<p>其中 <strong><code>企业版</code></strong> 与 <strong><code>高级集群版</code></strong> 在 <strong>试用期过后会进行收费</strong> ，而 <strong><code>社区版</code></strong> 免费开源，采用了 <strong><code>GPL v2</code></strong> 开源协议，下载后可供免费使用，这里根据需要我选择了 <strong><code>MySQL Community (GPL) Downloads »</code></strong> ，即为 <strong><code>社区版</code></strong> ，点击后，进入下一个页面。</p>
+</li>
+<li>
+<p>点开一看，哇，这又是啥啊，不要慌，我们找到如下两项:</p>
+ <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL Community Server         //压缩包版</span><br><span class="line">MySQL Installer for Windows    //MSI安装包版</span><br></pre></td></tr></table></div></figure>
+ 
+    <div class="note-plugin info">
+      <span class="note-plugin__icon note-plugin__icon--info">
+              <i class="fas fa-info-circle"></i>
+            </span>
+      <p><strong>注意</strong><br />前者下载后是一个压缩包，需要手动修改配置文件 <strong><code>my.ini</code></strong> ，还需要手动输入安装命令；而后者实质上是一个 <strong><code>.msi安装包</code></strong> 。</p>
+    </div>
+    
+<p>这里我推荐选择后者，即为 <strong><code>MySQL Installer for Windows</code></strong> ，点击进入下一个页面。</p>
+</li>
+<li>
+<p>点开后发现，有两个下载地址，这里上面第一个文件的文件名多了一个 <strong><code>web</code></strong> 字样，意为 <strong><code>在线安装包</code></strong> ；而第二个文件的文件名并没有 <strong><code>web</code></strong> 字样，意为 <strong><code>离线安装包</code></strong> ，这里我推荐选择第二个完整的 <strong><code>离线安装包</code></strong> （无 <strong><code>web</code></strong> 字样），点击第二个文件的 <strong><code>Download</code></strong> 。</p>
+ 
+    <div class="note-plugin info">
+      <span class="note-plugin__icon note-plugin__icon--info">
+              <i class="fas fa-info-circle"></i>
+            </span>
+      <p><strong>这里有小伙伴就会问了，刚刚那两个文件上面不都写着32位吗，那64位去哪了呢？</strong><br />其实这两个安装包都包含64位的环境，在当前的版本中，只不过没有标明而已。好了，相信这时你已经下载完成了，我们进入下一个阶段。</p>
+    </div>
+  
+</li>
+</ol>
+
+        <h2 id="三-安装前的准备及安装与配置"   >
+          <a href="#三-安装前的准备及安装与配置" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#三-安装前的准备及安装与配置"></a> 三、安装前的准备及安装与配置</h2>
+      
+<ol>
+<li>
+<p>安装前的准备</p>
+<p>在安装前，你需要检查你的 <strong><code>电脑名称</code></strong> 中是否含有 <em><strong>中文字符</strong></em> ，如果含有 <em><strong>中文字符</strong></em> ，后续安装可能会失败。</p>
+ 
+    <div class="note-plugin success">
+      <span class="note-plugin__icon note-plugin__icon--success">
+              <i class="fas fa-check-circle"></i>
+            </span>
+      <p><strong>Windows 10</strong><br />打开 <strong><code>设置-系统-关于</code></strong> ，在这里你可以看到你的 <strong><code>电脑名称</code></strong> ，这时如果其中有 <strong><code>中文字符</code></strong> ，请点击 <strong><code>重命名电脑</code></strong> 确保没有中文字符后 <strong><code>确定</code></strong> 并重启，保证 <strong><code>没有中文字符</code></strong> 。</p>
+    </div>
+  
+ 
+    <div class="note-plugin success">
+      <span class="note-plugin__icon note-plugin__icon--success">
+              <i class="fas fa-check-circle"></i>
+            </span>
+      <p><strong>Windows 11</strong><br />打开 <strong><code>设置-系统</code></strong> ，在左上角我们可以直接看到这台电脑的名称，这时如果其中有 <strong><code>中文字符</code></strong> ，请点击 <strong><code>重命名</code></strong> 确保没有中文字符后 <strong><code>确定</code></strong> 并重启，保证 <strong><code>没有中文字符</code></strong> 。</p>
+    </div>
+  
+<p>如果这一步没有问题，我们就可以正式进入安装阶段了。</p>
+</li>
+<li>
+<p>安装与配置</p>
+<p>双击 <strong><code>.msi</code></strong> 安装文件，稍等片刻。<br />
+这里分别有五个选项，它们分别是：</p>
+ <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Developer Default  //安装MySQL服务器以及开发MySQL应用所需的工具</span><br><span class="line">Server only        //仅安装MySQL服务器</span><br><span class="line">Client only        //仅安装客户端</span><br><span class="line">Full               //安装MySQL所有可用组件</span><br><span class="line">Custom             //（经典）自定义安装</span><br></pre></td></tr></table></div></figure>
+ 
+    <div class="note-plugin info">
+      <span class="note-plugin__icon note-plugin__icon--info">
+              <i class="fas fa-info-circle"></i>
+            </span>
+      <p><strong>如果你想要自定义安装的路径（如D盘），那么请选择Custom，但是选择Custom后，他会让你手动选择要安装的组件。那么我们应该选择什么呢？</strong><br />这里有一个小技巧：首先我们选择 <strong><code>Custom</code></strong> 后，点击 <strong><code>Back</code></strong> 退回去，退回去后选择 <strong><code>Developer Default</code></strong> ，点击 <strong><code>Next</code></strong> ，这时点击 <strong><code>Back</code></strong> 再次退回去，此时再一次选择 <strong><code>Custom</code></strong> ，这时我们发现已经自动选好了。</p>
+    </div>
+  
+<p>现在，请一个一个点击右边的组件，并点击下方的 <strong><code>Adavanced Options（高级选项）</code></strong> ， <strong>自定义你的安装路径</strong> ，具体操作，可以参考视频中的操作方法。<br />
+这里我将 <strong>MySQL所有的套件</strong> 全部存放在了 <strong><code>D:\MySQL\*</code></strong> ，将 <strong>数据库本身</strong> 存放在了 <strong><code>D:\MySQLData\*</code></strong> ；<br />
+选择完安装路径后，点击 <strong><code>Next</code></strong> ；之后，便是我冗长的安装步骤，这里仅供参考：</p>
+ <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">点击Execute检查运行环境；</span><br><span class="line">（VC++库）若有则点击安装；</span><br><span class="line">点击Next；Yes；</span><br><span class="line">点击Execute安装MySQL;请稍等；</span><br><span class="line">Next到”Type and Networking”这一页，开始进入配置阶段；</span><br><span class="line">”Type and Networking”默认，点击Next；</span><br><span class="line">选择密码类型：</span><br><span class="line">注意：如果后期使用Navicat这个软件对数据库进行连接管理，</span><br><span class="line">那么请务必选择第二个选项（老版本MySQL的密码类型）；</span><br><span class="line">如果不使用Navicat这个软件的话，则可以选择第一个选项（新版本MySQL的密码类型）；</span><br><span class="line">Next；</span><br><span class="line">输入root权限的密码：第一行输入，第二行确认；</span><br><span class="line">（P.S.请务必记住你的管理员密码！！！）</span><br><span class="line">Next；</span><br><span class="line">Next；</span><br><span class="line">点击Execute写入刚才的配置；</span><br><span class="line">稍等片刻；待所有对勾打完后，点击Finish完成对MySQL服务器的配置；</span><br><span class="line">Next；</span><br><span class="line">Finish；</span><br><span class="line">Next；</span><br><span class="line">这时在Password一栏中输入刚才设置的密码，点击Check验证；</span><br><span class="line">密码正确后，点击Next；</span><br><span class="line">点击Execute；</span><br><span class="line">Finish；</span><br><span class="line">Next；</span><br><span class="line">Finish；至此安装成功。</span><br></pre></td></tr></table></div></figure>
+ 
+    <div class="note-plugin info">
+      <span class="note-plugin__icon note-plugin__icon--info">
+              <i class="fas fa-info-circle"></i>
+            </span>
+      <p><strong>注意</strong><br />使用此方法安装的MySQL 8.0，其配置文件 <strong><code>my.ini</code></strong> 默认生成在数据库目录下。</p>
+    </div>
+  
+</li>
+<li>
+<p>配置环境变量</p>
+ 
+    <div class="note-plugin success">
+      <span class="note-plugin__icon note-plugin__icon--success">
+              <i class="fas fa-check-circle"></i>
+            </span>
+      <p><strong>Windows 10 较新版本及 Windows 11</strong><br />打开 <strong><code>环境变量</code></strong> ，点击下方 <em>系统变量</em> 中的 <strong><code>Path</code></strong> ，单击 <strong><code>编辑</code></strong> ，然后点击 <strong><code>新建</code></strong> ， <strong><code>浏览</code></strong> ，选择 <strong><code>MySQL服务器</code></strong> 下的 <strong><code>bin目录</code></strong> 。</p>
+    </div>
+  
+ 
+    <div class="note-plugin success">
+      <span class="note-plugin__icon note-plugin__icon--success">
+              <i class="fas fa-check-circle"></i>
+            </span>
+      <p><strong>Windows 10 较老版本（如1507 (10240)版本）及以前版本的 Windows</strong><br />打开 <strong><code>环境变量</code></strong> ，点击下方 <em>系统变量</em> 中的 <strong><code>Path</code></strong> ，单击 <strong><code>编辑</code></strong> ， <em>里面所有的内容都不要删改！</em> 在最后面添加一个英文的分号 <strong><code>;</code></strong> ，然后在英文分号 <strong><code>;</code></strong>  <em>后面</em> 添加 <strong><code>MySQL服务器</code></strong> 下的 <strong><code>bin目录</code></strong> 。</p>
+    </div>
+  
+<p>至此，环境全部配置完毕。</p>
+</li>
+</ol>
+
+        <h2 id="四-验证"   >
+          <a href="#四-验证" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#四-验证"></a> 四、验证</h2>
+      
+<ol>
+<li>打开 <strong><code>CMD</code></strong> ， <strong><code>PowerShell</code></strong> ， <strong><code>Windows Terminal</code></strong> 其中的 <strong><code>任意一个终端</code></strong> ，输入 <strong><code>mysql -u root -p</code></strong> （注意空格），提示输入密码，输入密码并正确显示MySQL的信息后，至此，MySQL安装成功；</li>
+<li>最后再来验证一下我之前说的64位版本吧，在 <strong><code>CMD</code></strong> ， <strong><code>PowerShell</code></strong> ， <strong><code>Windows Terminal</code></strong> 任意窗口中，输入 <strong><code>mysql --version</code></strong> （注意两个横杠以及空格）显示有 <strong><code>Win64 on x86_64</code></strong> 字样，说明MySQL版本为64位版本。</li>
+</ol>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://questionmark001.github.io">QuestionMark001-向阳菌</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://questionmark001.github.io/2022/03/12/mysql80setup/">https://questionmark001.github.io/2022/03/12/mysql80setup/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://questionmark001.github.io/tags/MySQL-8-0/">MySQL 8.0</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/alipayreward.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/wechatreward.jpg"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2022/01/30/HappyNewYear/"><span class="paginator-prev__text">新年快乐</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%BC%80%E5%A7%8B"><span class="toc-number">1.</span> <span class="toc-text">
+           一、开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">
+           二、下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%8F%8A%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">
+           三、安装前的准备及安装与配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">
+           四、验证</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/圆形个人头像.png" alt="avatar"></div><p class="sidebar-ov-author__text">向阳菌</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/QuestionMark001/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/xiang-yang-jun-50/" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-zhihu"></i></span></a><a class="sidebar-ov-social-item" href="https://questionmark001.github.io/wechat/wechat.html" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="tencent://message?uin=604661720" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="mailto:604661720@qq.com" target="_blank" rel="noopener" data-popover="QQ邮箱" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="far fa-envelope"></i></span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/weixin_63169207/" target="_blank" rel="noopener" data-popover="CSDN博客" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">C</span></a><a class="sidebar-ov-social-item" href="https://leetcode-cn.com/u/junxiangyang/" target="_blank" rel="noopener" data-popover="力扣（LeetCode）" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">LC</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/288506145" target="_blank" rel="noopener" data-popover="哔哩哔哩" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fas fa-play"></i></span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS 订阅</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span><a target="_blank" rel="noopener" href="https://github.com/QuestionMark001">QuestionMark001-向阳菌</a></span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.0.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"><div class="search-btns">使用搜索：<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>谷歌</span><span class="search-btns-item search-btns-item--bing"><i></i>必应</span><span class="search-btns-item search-btns-item--baidu"><i></i>百度</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script type="text/x-mathjax-config">var mathjaxMhchem = '';
+var mathJaxTex = {
+  equationNumbers: {
+    autoNumber: 'AMS'
+  }
+};
+
+if (false) {
+  mathjaxMhchem = 'https://cdn.jsdelivr.net/npm/mathjax-mhchem@3.3.2/mhchem.min.js';
+  MathJax.Ajax.config.path['mhchem'] = mathjaxMhchem;
+
+  mathJaxTex.extensions = [mathjaxMhchem];
+} else {
+  mathJaxTex.extensions = ['AMSmath.js','AMSsymbols.js'];
+}
+
+MathJax.Hub.Config({
+  menuSettings: {
+    zoom: 'None'
+  },
+  showMathMenu: false,
+  jax: ['input/TeX','output/CommonHTML'],
+  extensions: ['tex2jax.js'],
+  TeX: mathJaxTex,
+  tex2jax: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+});
+
+MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+  MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+    if (data.display) {
+      var next = data.script.nextSibling;
+      while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling; }
+      if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next); }
+    }
+  });
+});
+
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i = 0; i < all.length; i++) {
+    document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'MzsSoFAb9VK4cqO8DBIJRmBz-gzGzoHsz',
+    appKey: '9MyI3VhPvVBw2k4mK6u04cXe',
+    notify: true,
+    verify: true,
+    placeholder: '(≧∀≦)ゞ 来评论吧',
+    avatar: 'mm',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: true,
+    lang: '' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
