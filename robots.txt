@@ -1,4 +1,4 @@
-# hexo robots.txt
+# robots.txt
 User-agent: *
 Allow: /
 Allow: /home/
@@ -7,7 +7,7 @@ Allow: /archives/
 Allow: /categories/
 Allow: /tags/
 Allow: /playlist/
-Allow: /friends/
+Allow: /link/
 
 Disallow: /js/
 Disallow: /css/
