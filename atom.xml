@@ -6,7 +6,7 @@
   <link href="https://questionmark001.github.io/atom.xml" rel="self"/>
   
   <link href="https://questionmark001.github.io/"/>
-  <updated>2022-05-24T12:12:11.581Z</updated>
+  <updated>2022-11-10T07:37:34.421Z</updated>
   <id>https://questionmark001.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一篇SQL笔记</title>
+    <link href="https://questionmark001.github.io/2022/11/10/sql-note-01/"/>
+    <id>https://questionmark001.github.io/2022/11/10/sql-note-01/</id>
+    <published>2022-11-10T07:02:59.000Z</published>
+    <updated>2022-11-10T07:37:34.421Z</updated>
+    
+    
+    <summary type="html">今天学习了数据库的范式设计，受益颇多，故此记录。</summary>
+    
+    
+    
+    <category term="面试笔记" scheme="https://questionmark001.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="SQL笔记" scheme="https://questionmark001.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/SQL%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="SQL" scheme="https://questionmark001.github.io/tags/SQL/"/>
+    
+    <category term="MySQL" scheme="https://questionmark001.github.io/tags/MySQL/"/>
+    
+    <category term="SQL范式" scheme="https://questionmark001.github.io/tags/SQL%E8%8C%83%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>《MySQL 8.0 保姆级下载、安装及配置教程》</title>

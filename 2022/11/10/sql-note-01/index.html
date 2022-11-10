@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>记一篇SQL笔记 | QuestionMark001's Blog</title><meta name="keywords" content="SQL,MySQL,SQL范式"><meta name="author" content="QuestionMark001-向阳菌"><meta name="copyright" content="QuestionMark001-向阳菌"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="今天学习了数据库的范式设计，受益颇多，故此记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一篇SQL笔记">
+<meta property="og:url" content="https://questionmark001.github.io/2022/11/10/sql-note-01/index.html">
+<meta property="og:site_name" content="QuestionMark001&#39;s Blog">
+<meta property="og:description" content="今天学习了数据库的范式设计，受益颇多，故此记录。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/10/zpvlJs.jpg">
+<meta property="article:published_time" content="2022-11-10T07:02:59.000Z">
+<meta property="article:modified_time" content="2022-11-10T07:37:34.421Z">
+<meta property="article:author" content="QuestionMark001-向阳菌">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="SQL范式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/11/10/zpvlJs.jpg"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://questionmark001.github.io/2022/11/10/sql-note-01/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?78d162c3320774c1f956da2bfc03b07a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: QuestionMark001-向阳菌","link":"链接: ","source":"来源: QuestionMark001's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记一篇SQL笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-10 15:37:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="QuestionMark001's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/playlist/"><i class="fa-fw fas fa-music"></i><span> 歌单</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-user-friends"></i><span> 朋友</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw far fa-address-card"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/11/10/zpvlJs.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">QuestionMark001's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/playlist/"><i class="fa-fw fas fa-music"></i><span> 歌单</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-user-friends"></i><span> 朋友</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw far fa-address-card"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">记一篇SQL笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-10T07:02:59.000Z" title="发表于 2022-11-10 15:02:59">2022-11-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-10T07:37:34.421Z" title="更新于 2022-11-10 15:37:34">2022-11-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/SQL%E7%AC%94%E8%AE%B0/">SQL笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/11/10/sql-note-01/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/11/10/sql-note-01/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>今天学习了数据库的范式设计，受益颇多，故此记录。</strong></p>
+<span id="more"></span>
+<p><img src="https://s1.ax1x.com/2022/11/10/zpvlJs.jpg" alt="记一篇SQL笔记" title="今天学习了数据库的范式设计，受益颇多，故此记录。"></p>
+<h2 id="一、树形结构">一、树形结构</h2>
+<p>问：如何用最少的表和字段设计一个树形结构？</p>
+<p>答：一个表，三个字段（或两个字段）；如：<em>id</em> ，<em>pid</em> ，<em>pname（或不要）</em>。</p>
+<h2 id="二、基础技巧">二、基础技巧</h2>
+<h3 id="a-“对”（正确性）">a) “对”（正确性）</h3>
+<h4 id="1-一个表">1) 一个表</h4>
+<ol>
+<li>
+<p>需要主键（PK）保证每条数据的 <strong>唯一性（即实体完整性）</strong>（如：加一个id字段作为主键）；</p>
+</li>
+<li>
+<p>尽量使用 <strong>非业务字段</strong> 做PK（如学生表中不用学号做PK，而另外新建一个 <strong>非业务字段id</strong> 作为主键，因为学号属于其中的业务字段，<em>一旦发生改动</em>，主键无法变动就 <em>芭比Q</em> 了）；</p>
+</li>
+</ol>
+<h4 id="2-多个表（FK）（参照完整性）">2) 多个表（FK）（参照完整性）</h4>
+<h3 id="b-“好”（“尺”：范式）（范式共有-5-级）（平时三级就够了）">b) “好”（“尺”：范式）（范式共有 <strong>5</strong> 级）（平时三级就够了）</h3>
+<ol>
+<li>
+<p>一级范式（1NF）：<strong>简单二维表（字段中不能再有集合）</strong></p>
+</li>
+<li>
+<p>二级范式（2NF）：<strong>消除部分函数依赖</strong>（小技巧：比如给每一个表 <strong>都加一个非业务字段</strong> 作为PK即可）</p>
+</li>
+<li>
+<p>三级范式（3NF）：<strong>消除 <em>传递函数依赖（即其中一个非主键字段由其他字段推算而来）</em></strong></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://questionmark001.github.io">QuestionMark001-向阳菌</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://questionmark001.github.io/2022/11/10/sql-note-01/">https://questionmark001.github.io/2022/11/10/sql-note-01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://questionmark001.github.io" target="_blank">QuestionMark001's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQL/">SQL</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/SQL%E8%8C%83%E5%BC%8F/">SQL范式</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/11/10/zpvlJs.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechatreward.jpg" target="_blank"><img class="post-qr-code-img" src="/images/wechatreward.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipayreward.jpg" target="_blank"><img class="post-qr-code-img" src="/images/alipayreward.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/03/12/mysql80setup/"><img class="next-cover" src="https://s1.ax1x.com/2022/03/13/bqrMu9.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《MySQL 8.0 保姆级下载、安装及配置教程》</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">QuestionMark001-向阳菌</div><div class="author-info__description">QuestionMark001的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/QuestionMark001"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.zhihu.com/people/xiang-yang-jun-50/" target="_blank" title="知乎"><i class="fab fa-zhihu"></i></a><a class="social-icon" href="https://questionmark001.github.io/wechat/wechat.html" target="_blank" title="微信 (二维码)"><i class="fab fa-weixin"></i></a><a class="social-icon" href="tencent://message?uin=604661720" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:604661720@qq.com" target="_blank" title="QQ邮箱"><i class="far fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_63169207/" target="_blank" title="CSDN"><i class="fa-solid fa-blog"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/junxiangyang/" target="_blank" title="LeetCode (力扣)"><i class="fa-solid fa-code"></i></a><a class="social-icon" href="https://space.bilibili.com/288506145" target="_blank" title="哔哩哔哩"><i class="fa-brands fa-bilibili"></i></a><a class="social-icon" href="https://questionmark001.github.io/atom.xml" target="_blank" title="RSS"><i class="fa-solid fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎访问 ヾ(•ω•`)o</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">一、树形结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E7%A1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">二、基础技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E2%80%9C%E5%AF%B9%E2%80%9D%EF%BC%88%E6%AD%A3%E7%A1%AE%E6%80%A7%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">a) “对”（正确性）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%80%E4%B8%AA%E8%A1%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">1) 一个表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A4%9A%E4%B8%AA%E8%A1%A8%EF%BC%88FK%EF%BC%89%EF%BC%88%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">2) 多个表（FK）（参照完整性）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-%E2%80%9C%E5%A5%BD%E2%80%9D%EF%BC%88%E2%80%9C%E5%B0%BA%E2%80%9D%EF%BC%9A%E8%8C%83%E5%BC%8F%EF%BC%89%EF%BC%88%E8%8C%83%E5%BC%8F%E5%85%B1%E6%9C%89-5-%E7%BA%A7%EF%BC%89%EF%BC%88%E5%B9%B3%E6%97%B6%E4%B8%89%E7%BA%A7%E5%B0%B1%E5%A4%9F%E4%BA%86%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">b) “好”（“尺”：范式）（范式共有 5 级）（平时三级就够了）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/10/sql-note-01/" title="记一篇SQL笔记"><img src="https://s1.ax1x.com/2022/11/10/zpvlJs.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记一篇SQL笔记"/></a><div class="content"><a class="title" href="/2022/11/10/sql-note-01/" title="记一篇SQL笔记">记一篇SQL笔记</a><time datetime="2022-11-10T07:02:59.000Z" title="发表于 2022-11-10 15:02:59">2022-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/12/mysql80setup/" title="《MySQL 8.0 保姆级下载、安装及配置教程》"><img src="https://s1.ax1x.com/2022/03/13/bqrMu9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《MySQL 8.0 保姆级下载、安装及配置教程》"/></a><div class="content"><a class="title" href="/2022/03/12/mysql80setup/" title="《MySQL 8.0 保姆级下载、安装及配置教程》">《MySQL 8.0 保姆级下载、安装及配置教程》</a><time datetime="2022-03-12T10:06:29.000Z" title="发表于 2022-03-12 18:06:29">2022-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/30/HappyNewYear/" title="新年快乐"><img src="https://s4.ax1x.com/2022/01/30/H9zRET.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="新年快乐"/></a><div class="content"><a class="title" href="/2022/01/30/HappyNewYear/" title="新年快乐">新年快乐</a><time datetime="2022-01-30T09:22:43.000Z" title="发表于 2022-01-30 17:22:43">2022-01-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s1.ax1x.com/2022/11/10/zpvlJs.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By QuestionMark001-向阳菌</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://github.com/QuestionMark001"><i class="fa-brands fa-github"></i></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'MzsSoFAb9VK4cqO8DBIJRmBz-gzGzoHsz',
+      appKey: '9MyI3VhPvVBw2k4mK6u04cXe',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://unpkg.com/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
