@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://questionmark001.github.io/link/index.html</loc>
+    
+    <lastmod>2022-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://questionmark001.github.io/2022/11/10/sql-note-01/</loc>
     
     <lastmod>2022-11-11</lastmod>
@@ -14,15 +23,6 @@
     <loc>https://questionmark001.github.io/2022/03/12/mysql80setup/</loc>
     
     <lastmod>2022-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://questionmark001.github.io/link/index.html</loc>
-    
-    <lastmod>2022-10-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -90,13 +90,6 @@
   </url>
   
   <url>
-    <loc>https://questionmark001.github.io/tags/MySQL-8-0/</loc>
-    <lastmod>2022-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://questionmark001.github.io/tags/SQL/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -117,17 +110,17 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://questionmark001.github.io/categories/%E6%8B%9C%E5%B9%B4/</loc>
+    <loc>https://questionmark001.github.io/tags/MySQL-8-0/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
+
+  
   <url>
-    <loc>https://questionmark001.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://questionmark001.github.io/categories/%E6%8B%9C%E5%B9%B4/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -141,7 +134,7 @@
   </url>
   
   <url>
-    <loc>https://questionmark001.github.io/categories/%E6%95%99%E7%A8%8B/%E5%AE%89%E8%A3%85/</loc>
+    <loc>https://questionmark001.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -149,6 +142,13 @@
   
   <url>
     <loc>https://questionmark001.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/SQL%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://questionmark001.github.io/categories/%E6%95%99%E7%A8%8B/%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2022-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
