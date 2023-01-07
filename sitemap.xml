@@ -83,6 +83,13 @@
 
   
   <url>
+    <loc>https://questionmark001.github.io/tags/News/</loc>
+    <lastmod>2023-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://questionmark001.github.io/tags/SQL/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -104,13 +111,6 @@
   </url>
   
   <url>
-    <loc>https://questionmark001.github.io/tags/News/</loc>
-    <lastmod>2023-01-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://questionmark001.github.io/tags/MySQL-8-0/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -120,14 +120,14 @@
 
   
   <url>
-    <loc>https://questionmark001.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://questionmark001.github.io/categories/%E6%8B%9C%E5%B9%B4/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://questionmark001.github.io/categories/%E6%8B%9C%E5%B9%B4/</loc>
+    <loc>https://questionmark001.github.io/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
